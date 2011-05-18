@@ -21,7 +21,7 @@ class Vim < Thor
         end
     end
 
-    desc 'update', 'Mise à jours des plugins installés'
+    desc 'update', 'Mise a jours des plugins installes'
     def update
         plugins.each_pair do |name, repo|
             plugin_path = File.join('bundle', name)
@@ -33,7 +33,7 @@ class Vim < Thor
         end
     end
 
-    desc 'clean', 'Nettoyage des plugins non referencés dans plugins.yml'
+    desc 'clean', 'Nettoyage des plugins non references dans plugins.yml'
     def clean
         Pathname("bundle").each_child do |f|
             next if "pathogen" == f.basename
