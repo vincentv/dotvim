@@ -90,35 +90,6 @@ autocmd BufWrite * silent! %s/[\r \t]\+$//
 " jump to last position of buffer when opening
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
 
-" -------- XML / (x)HTML
-let html_use_css = 1        " export HTML (:TOhtml) *avec CSS*
-
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-
-autocmd BufRead *.html set ft=html
-
-" -------- CSS
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
-" -------- Javascript (Ecmascript)
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-
-" -------- PHP
-let php_sql_query = 1       "Coloration des requetes SQL
-let php_baselib = 1
-let php_htmlInStrings = 1   "Coloration des balises html
-let php_noShortTags = 1
-let php_folding = 1
-
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-
-autocmd BufRead *.php set ft=php
-
-" ---- Jelix
-autocmd BufRead (*.ini.php, *.ini.php.dist) set ft=dosini
-autocmd BufRead *.tpl set ft=html
-
 " ---- Mustache
 au BufNewFile,BufRead *.mustache        setf mustache
 
@@ -133,38 +104,12 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,*.thor,config.ru}  
 " -------- Syntastic
 let g:syntastic_enable_signs=1
 
-" ----------------------------------------------------------------------------
-"  Mapping
-" ----------------------------------------------------------------------------
 
-let mapleader = ","               " remap <LEADER> to ',' (instead of '\')
-let g:mapleader = ","
+" -------- Chargement des fichiers de config -------- "
+if !exists('config_dir')
+    let config_dir = substitute(globpath(&rtp, 'config/'), "\n", ',', 'g')
+endif
 
-nmap <Leader>$ :call Preserve("%s/\\s\\+$//e")<CR>
-nmap <Leader>= :call Preserve("normal gg=G")<CR>
-
-" ---- NERDTree
-map <Leader>n :NERDTreeToggle<CR>
-
-" ---- Unimpaired
-" Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
-" Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
-
-" ----------------------------------------------------------------------------
-"  Functions
-" ----------------------------------------------------------------------------
-function! Preserve(command)
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    execute a:command
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
+for $config in split(globpath(config_dir, '*.vim'), "\n")
+        source $config
+endfor
