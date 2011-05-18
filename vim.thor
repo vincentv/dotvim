@@ -16,7 +16,7 @@ class Vim < Thor
             plugin_path = File.join('bundle', name)
             unless File.exist? plugin_path
                 run "git submodule add #{repo} #{plugin_path}"
-                run "git config --file='.gitmodules' submodule.#{plugin_path}.ignore dirty"
+                run "git config --file=.gitmodules submodule.#{plugin_path}.ignore dirty"
             end
         end
     end
@@ -41,7 +41,7 @@ class Vim < Thor
             if f.directory? && !plugins.has_key?(f.basename.to_s)
                 begin
                     run "git config --remove-section  submodule.'#{f}'"
-                    run "git config --file='.gitmodules' --remove-section  submodule.'#{f}'"
+                    run "git config --file=.gitmodules --remove-section  submodule.'#{f}'"
                     run "git rm -r --cached '#{f}'"
                     f.rmtree
                 rescue
