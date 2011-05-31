@@ -17,6 +17,7 @@ class Vim < Thor
             unless File.exist? plugin_path
                 run "git submodule add #{repo} #{plugin_path}"
                 run "git config --file=.gitmodules submodule.#{plugin_path}.ignore dirty"
+                say "Installation de #{name}"
             end
         end
     end
@@ -26,6 +27,7 @@ class Vim < Thor
         plugins.each_pair do |name, repo|
             plugin_path = File.join('bundle', name)
             if File.exist? plugin_path
+                say "Mise a jours de #{name}"
                 Dir.chdir plugin_path do
                     run "git pull"
                 end
@@ -39,6 +41,7 @@ class Vim < Thor
             next if "pathogen" == f.basename
 
             if f.directory? && !plugins.has_key?(f.basename.to_s)
+                say "Suppression de #{name}"
                 begin
                     run "git config --remove-section  submodule.'#{f}'"
                     run "git config --file=.gitmodules --remove-section  submodule.'#{f}'"
