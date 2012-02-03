@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/vincent/.rvm/gems/ruby-1.9.2-p290@httpcron/gems/capybara-webkit-0.5.0'
+let g:netrw_dirhist_2='/Users/vincent/projets/insurance_book/config'
+let g:netrw_dirhist_3='/Users/vincent/.rvm/gems/ruby-1.9.2-p290@ghmarks/gems'
+let g:netrw_dirhist_4='/Users/vincent/Library/Logs/Pow'
+let g:netrw_dirhist_5='/Users/vincent'
+let g:netrw_dirhist_6='/Users/vincent/.heroku/client/lib/heroku'
+let g:netrw_dirhist_7='/Users/vincent/projets/linkedin/spec/cases'
+let g:netrw_dirhist_8='/Users/vincent/.vim'

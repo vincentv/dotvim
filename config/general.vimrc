@@ -12,9 +12,9 @@ set fileformats=unix                  " support these files
 " ---- Text indent
 set autoindent             " automatic indent new lines
 set smartindent            " be smart about it
-set softtabstop=4          " yep, 4
-set shiftwidth=4           " ..
-set tabstop=4
+set softtabstop=2          " yep, 4
+set shiftwidth=2           " ..
+set tabstop=2
 set expandtab              " expand tabs to spaces
 set nosmarttab             " fuck tabs
 

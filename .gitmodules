@@ -1,0 +1,32 @@
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+	ignore = dirty
+[submodule "bundle/javascript"]
+	path = bundle/javascript
+	url = https://github.com/pangloss/vim-javascript.git
+	ignore = dirty
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+	ignore = dirty
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+	ignore = dirty
+[submodule "bundle/unimpaired"]
+	path = bundle/unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+	ignore = dirty
+[submodule "bundle/mustache"]
+	path = bundle/mustache
+	url = https://github.com/juvenn/mustache.vim.git
+	ignore = dirty
+[submodule "bundle/html5"]
+	path = bundle/html5
+	url = https://github.com/othree/html5.vim.git
+	ignore = dirty
+[submodule "bundle/molokai"]
+	path = bundle/molokai
+	url = https://github.com/mrtazz/molokai.vim.git
+	ignore = dirty
