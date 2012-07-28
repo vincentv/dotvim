@@ -29,6 +29,7 @@ class Vim < Thor
             if File.exist? plugin_path
                 say "Mise a jours de #{name}"
                 Dir.chdir plugin_path do
+                    run "git checkout master"
                     run "git pull"
                 end
             end
